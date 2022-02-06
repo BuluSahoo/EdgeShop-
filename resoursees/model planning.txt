@@ -1,0 +1,56 @@
+## PRODUCT ->
+# ProductCategory
+name = charField(max_lenth = 150)
+status = booleanField()
+
+# Product
+product_category = Fk(ProductCategory,delete)
+name = charField(max_lenth=150)
+description = TextField
+price = Decimal
+stock = integerField
+cover_image = ImageField
+status = booleanField()
+
+# Product_Image
+Product = FK(Product, delete)
+image = ImageField()
+
+## CART 
+# Cart 
+user = FK(User, delete)
+product = Fk(Product, delete)
+quantity = integerField(default = 1)
+
+## ORDER 
+# order 
+user = Fk(User, delete)
+date_time = DateTimeField()
+name = charField(max_lenth=150)
+address = TextField()
+payment = booleanField(default=false)
+
+
+# Order details 
+order = FK(order, delete)
+product =Fk(product, delete)
+quantity = integerField()
+product_price = Decimal()
+
+
+## USER PROFILE 
+# UserProfile 
+user = models.Fk(User, ondelete=) # OneToOne relation
+address = TextField(null=True, blank=True)
+mobile = CharField(max_lenth=10, null=True, blank=True)
+profile_picture = ImageField(null=True,blank=True)
+
+## PAYMENT 
+# payment
+order = models.Fk(order,ondelete=)
+payment_staus = models.CharField(max_lenth=255)
+payment_id = models.CharField(max_lenth=255)
+request_id = models.CharField(max_lenth=255)
+payment_method = models.CharField(max_lenth=255)
+
+
